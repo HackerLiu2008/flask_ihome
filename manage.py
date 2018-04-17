@@ -2,8 +2,9 @@
 from flask import session
 from flask_script import Manager
 from flask_migrate import Migrate,MigrateCommand
-from ihome import app,db
+from ihome import create_app,db
 
+app=create_app('pro')
 # 创建脚本管理器的对象
 manage=Manager(app)
 

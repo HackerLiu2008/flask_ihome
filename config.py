@@ -20,3 +20,27 @@ class Confin(object):
     SESSION_REDIS = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT)  # 使用 redis 的实例
     PERMANENT_SESSION_LIFETIME = 86400  # session 的有效期，单位是秒
 
+class Development(Confin):
+    '''开发环境下的配置'''
+    pass
+
+class Production(Confin):
+    '''生产环境，线上，部署之后'''
+    DEBUG = False
+    PERMANENT_SESSION_LIFETIME = 3600*24
+
+    #更换mysql数据库
+
+class UnitTest(Confin):
+    '''测试环境'''
+    TESTING=True
+    # 更换mysql数据库
+
+
+
+config={
+
+    'dev':Development,
+    'pro':Production,
+    'test':UnitTest,
+}
