@@ -1,10 +1,14 @@
 #coding:utf-8
 from flask import current_app
 
-from ihome import api2
 
 
-@api2.route('/<re(".*"):file_name>')
+from flask import Blueprint
+
+web_html=Blueprint('web_html',__name__)
+
+
+@web_html.route('/<re(".*"):file_name>')
 def index(file_name):
     # 判断用户填的是否为空后缀，为空怎帮他默认index。html
     if not file_name:
