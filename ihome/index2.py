@@ -1,7 +1,7 @@
 #coding:utf-8
 from flask import current_app
 
-from . import api2
+from ihome import api2
 
 
 @api2.route('/<re(".*"):file_name>')
